@@ -23,8 +23,20 @@ def find_events(url):
         if filt.search(thisurl) is not None:
             finals_urls.append(thisurl)
 
+    # Pull all result pages
     for i in range(len(finals_urls)):
-        print url+finals_urls[i]
+        parse_event_page(url+finals_urls[i])
+
+
+def parse_event_page(event_url):
+    req = requests.get(event_url)
+    event_page = req.text
+
+    eventsoup = bs(event_page)
+
+    print eventsoup.prettify()
+
+
 
 if len(sys.argv) == 1:
     sys.exit("You fucked up")
