@@ -33,9 +33,12 @@ def parse_event_page(event_url):
     event_page = req.text
 
     eventsoup = bs(event_page)
-
-    print eventsoup.prettify()
-
+    
+    filt = re.compile(r'Event [0-9]')
+    print eventsoup.b.string
+#     for event in eventsoup.find_all('b'):
+#         if filt.search(event.contents) is not None:
+#             print event
 
 
 if len(sys.argv) == 1:
