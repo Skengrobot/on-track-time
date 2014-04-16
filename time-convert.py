@@ -45,9 +45,11 @@ def parse_event_page(event_url):
     # filt = re.compile(r'[0-9]:[0-9][0-9]\.[0-9][0-9]    [0-9]:[0-9][0-9]\.[0-9][0-9]   [0-9][0-9][0-9]')
     timefilt = re.compile(r'[0-9]{2}\.[0-9]{2}')
     headerfilt = re.compile(r'=|-')
+    final_time = re.compile(r'  ([0-9\.:]*)  ')
     for line in eventsoup.pre.strings:
         if timefilt.search(line) is not None and headerfilt.search(line) is None:
-            print line
+            time = final_time.search(line)
+            print time.group()
 
 
 if len(sys.argv) == 1:
