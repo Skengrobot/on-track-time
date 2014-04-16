@@ -34,10 +34,10 @@ def parse_event_page(event_url):
 
     eventsoup = bs(event_page)
     
-    print eventsoup.b.string
-#     for event in eventsoup.find_all('b'):
-#         if filt.search(event.contents) is not None:
-#             print event
+    try:
+        print eventsoup.b.string
+    except AttributeError:
+        return
 
 
 if len(sys.argv) == 1:
