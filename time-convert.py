@@ -39,6 +39,8 @@ def parse_event_page(event_url):
         # Relay formatting is annoying and we don't need them
         print event
         if "Relay" in event: return
+        if "Para" in event: return
+        if "Time Trial" in event: return
 
     except AttributeError:
         return
