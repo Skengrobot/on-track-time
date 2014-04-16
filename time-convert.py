@@ -34,7 +34,6 @@ def parse_event_page(event_url):
 
     eventsoup = bs(event_page)
     
-    filt = re.compile(r'Event [0-9]')
     print eventsoup.b.string
 #     for event in eventsoup.find_all('b'):
 #         if filt.search(event.contents) is not None:
