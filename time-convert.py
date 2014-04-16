@@ -24,8 +24,11 @@ def find_events(url):
             finals_urls.append(thisurl)
 
     # Pull all result pages
-    for i in range(len(finals_urls)):
+    # for i in range(len(finals_urls)):
+    for i in range(1):
         parse_event_page(url+finals_urls[i])
+    
+    parse_event_page(url+'140402F002.htm')
 
 
 def parse_event_page(event_url):
@@ -38,6 +41,13 @@ def parse_event_page(event_url):
         print eventsoup.b.string
     except AttributeError:
         return
+        
+    # filt = re.compile(r'[0-9]:[0-9][0-9]\.[0-9][0-9]    [0-9]:[0-9][0-9]\.[0-9][0-9]   [0-9][0-9][0-9]')
+    timefilt = re.compile(r'[0-9]{2}\.[0-9]{2}')
+    headerfilt = re.compile(r'=|-')
+    for line in eventsoup.pre.strings:
+        if timefilt.search(line) is not None and headerfilt.search(line) is None:
+            print line
 
 
 if len(sys.argv) == 1:
