@@ -38,9 +38,9 @@ def parse_event_page(event_url):
         event = eventsoup.b.string
         # Relay formatting is annoying and we don't need them
         print event
-        if "Relay" in event: return
-        if "Para" in event: return
-        if "Time Trial" in event: return
+        blahfilter = re.compile(r'Relay|Para|Time Trial')
+        if blahfilter.search(event) is not None:
+            return
 
     except AttributeError:
         return
