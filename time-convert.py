@@ -24,7 +24,7 @@ def find_events(url):
             finals_urls.append(thisurl)
 
     # Pull all result pages
-    for i in range(len(finals_urls)):
+    for i in range(int(0.9*len(finals_urls)),len(finals_urls)):
         parse_event_page(url+finals_urls[i])
     
 
@@ -38,7 +38,7 @@ def parse_event_page(event_url):
         event = eventsoup.b.string
         # Relay formatting is annoying and we don't need them
         print event
-        blahfilter = re.compile(r'Relay|Para|Time Trial')
+        blahfilter = re.compile(r'Relay|Para|Time Trial|Multi')
         if blahfilter.search(event) is not None:
             return
 
@@ -48,7 +48,8 @@ def parse_event_page(event_url):
     timefilt = re.compile(r'[0-9]{2}\.[0-9]{2}')
     # Filter out event header and exibition swims
     headerfilt = re.compile(r'=|x')
-    final_time = re.compile(r' {2,4}([0-9\.:%#nmw]*)  ')
+    #final_time = re.compile(r' {2,4}([0-9\.:%#nmw]*)  ')
+    final_time = re.compile(r'([0-9\.:%#nmw]* )* ')
     for line in eventsoup.pre.strings:
         if timefilt.search(line) is not None and headerfilt.search(line) is None:
             time = final_time.search(line)
