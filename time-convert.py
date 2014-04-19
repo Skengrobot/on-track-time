@@ -48,8 +48,7 @@ def parse_event_page(event_url):
     timefilt = re.compile(r'[0-9]{2}\.[0-9]{2}')
     # Filter out event header and exibition swims
     headerfilt = re.compile(r'=|x')
-    #final_time = re.compile(r' {2,4}([0-9\.:%#nmw]*)  ')
-    final_time = re.compile(r'([0-9\.:%#nmw]* )* ')
+    final_time = re.compile(r'([0-9\.:%#nmwDQS]* )* ')
     for line in eventsoup.pre.strings:
         if timefilt.search(line) is not None and headerfilt.search(line) is None:
             time = final_time.search(line)
