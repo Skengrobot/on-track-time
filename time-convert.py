@@ -52,7 +52,11 @@ def parse_event_page(event_url):
     for line in eventsoup.pre.strings:
         if timefilt.search(line) is not None and headerfilt.search(line) is None:
             time = final_time.search(line)
-            print time.group().lstrip()
+            try:
+                finish_time = time.group().strip().split()[1]
+                print finish_time
+            except IndexError:
+                return
 
 
 if len(sys.argv) == 1:
