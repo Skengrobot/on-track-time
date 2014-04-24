@@ -7,7 +7,7 @@ def make_table(conversion_percent):
     # Latex formatting for tables
     f.write("""\n\\begin{table}\n\centering\n\caption{\\textbf{Times """)
     f.write(str(conversion_percent))
-    f.write(' percent off SNC GOLD on track times}}\n\\begin{tabular}{ |c||c|c|c|c|c|c|c|c|c|c| }\n\hline\n& \multicolumn{5}{|c|}{Female} & \multicolumn{5}{|c|}{Male}')
+    f.write(' percent off SNC FINAL on track times}}\n\\begin{tabular}{ |c||c|c|c|c|c|c|c|c|c|c| }\n\hline\n& \multicolumn{5}{|c|}{Female} & \multicolumn{5}{|c|}{Male}')
     f.write(' \\')
     f.write('\\')
     f.write('\n')
@@ -44,7 +44,7 @@ def make_table(conversion_percent):
 
 
 
-data = swim_parse()
+data = swim_parse('gold-times')
 m_ages = ['18', '17', '16', '15', '14']
 f_ages = ['17-18', '16', '15', '14', '13']
 

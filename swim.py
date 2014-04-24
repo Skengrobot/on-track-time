@@ -3,8 +3,8 @@ import re
 from pprint import pprint
 import math
 
-def swim_parse():
-    dataset = file('./test')
+def swim_parse(file_name):
+    dataset = file(file_name)
 
     data = {}
     current_event = {}
